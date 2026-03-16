@@ -1,0 +1,42 @@
+.mapContainer {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-map);
+}
+
+.mapContainer :global(.gm-style) {
+  font-family: inherit !important;
+}
+
+/* Hide Google Maps default UI that clutters mobile */
+.mapContainer :global(.gmnoprint),
+.mapContainer :global(.gm-style-cc) {
+  display: none !important;
+}
+
+/* Price pin styles */
+:global(.rv-pin) {
+  background: var(--color-pin);
+  color: #fff;
+  font-size: var(--font-xs);
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.9);
+  transition: transform 0.15s ease, background 0.15s ease;
+  user-select: none;
+}
+
+:global(.rv-pin:hover),
+:global(.rv-pin.active) {
+  background: var(--color-pin-active);
+  transform: scale(1.15);
+  z-index: 2;
+}
+
+:global(.rv-pin.active) {
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.3), var(--shadow-md);
+}

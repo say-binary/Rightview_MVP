@@ -1,0 +1,60 @@
+:root {
+  /* Colors */
+  --color-primary: #1a56db;
+  --color-primary-light: #e8f0fe;
+  --color-primary-dark: #1240ab;
+  --color-surface: #ffffff;
+  --color-surface-dim: #f8f9fa;
+  --color-border: #e2e8f0;
+  --color-text: #1a202c;
+  --color-text-secondary: #64748b;
+  --color-text-muted: #94a3b8;
+  --color-success: #16a34a;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+  --color-pin: #1a56db;
+  --color-pin-active: #dc2626;
+  --color-overlay-bg: rgba(255, 255, 255, 0.95);
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* Border radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-xs: 11px;
+  --font-sm: 13px;
+  --font-base: 15px;
+  --font-md: 16px;
+  --font-lg: 18px;
+  --font-xl: 20px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.10), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.12), 0 2px 4px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.14), 0 4px 8px rgba(0,0,0,0.08);
+  --shadow-sheet: 0 -4px 20px rgba(0,0,0,0.12);
+
+  /* Z-index layers */
+  --z-map: 0;
+  --z-sheet: 10;
+  --z-overlay: 20;
+  --z-dropdown: 30;
+  --z-toast: 50;
+
+  /* Layout */
+  --filter-bar-height: 52px;
+  --chat-bar-height: 56px;
+  --sheet-peek-height: 80px;
+  --sheet-handle-height: 24px;
+}

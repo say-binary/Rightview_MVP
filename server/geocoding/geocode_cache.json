@@ -1,0 +1,237 @@
+{
+  "Worli, Mumbai, India": {
+    "latitude": 18.9986406,
+    "longitude": 72.8173599,
+    "fetchedAt": "2026-03-16T12:30:04.124Z"
+  },
+  "Juhu, Mumbai, India": {
+    "latitude": 19.1048146,
+    "longitude": 72.8267098,
+    "fetchedAt": "2026-03-16T12:30:04.427Z"
+  },
+  "Bandra East, Mumbai, India": {
+    "latitude": 19.060927,
+    "longitude": 72.8465307,
+    "fetchedAt": "2026-03-16T12:30:04.781Z"
+  },
+  "Borivali East, Mumbai, India": {
+    "latitude": 19.2297814,
+    "longitude": 72.86085589999999,
+    "fetchedAt": "2026-03-16T12:30:05.139Z"
+  },
+  "Mulund West, Mumbai, India": {
+    "latitude": 19.1758825,
+    "longitude": 72.95211929999999,
+    "fetchedAt": "2026-03-16T12:30:05.480Z"
+  },
+  "Bangalore, India": {
+    "latitude": 12.9628669,
+    "longitude": 77.57750899999999,
+    "fetchedAt": "2026-03-16T12:30:05.800Z"
+  },
+  "Outer Ring Road, Hyderabad, India": {
+    "latitude": 17.4383993,
+    "longitude": 78.3637355,
+    "fetchedAt": "2026-03-16T12:30:06.134Z"
+  },
+  "Hyderabad, India": {
+    "latitude": 17.406498,
+    "longitude": 78.47724389999999,
+    "fetchedAt": "2026-03-16T12:30:06.471Z"
+  },
+  "Chennai, India": {
+    "latitude": 13.0843007,
+    "longitude": 80.2704622,
+    "fetchedAt": "2026-03-16T12:30:06.758Z"
+  },
+  "Wagholi, Pune, India": {
+    "latitude": 18.5807719,
+    "longitude": 73.9787063,
+    "fetchedAt": "2026-03-16T12:30:07.055Z"
+  },
+  "Punawale, Pune, India": {
+    "latitude": 18.6309399,
+    "longitude": 73.7378149,
+    "fetchedAt": "2026-03-16T12:30:07.364Z"
+  },
+  "Baner, Pune, India": {
+    "latitude": 18.5590032,
+    "longitude": 73.7867629,
+    "fetchedAt": "2026-03-16T12:30:07.633Z"
+  },
+  "Hinjawadi, Pune, India": {
+    "latitude": 18.5912716,
+    "longitude": 73.73890899999999,
+    "fetchedAt": "2026-03-16T12:30:07.884Z"
+  },
+  "Kharadi, Pune, India": {
+    "latitude": 18.5539311,
+    "longitude": 73.9476257,
+    "fetchedAt": "2026-03-16T12:30:08.232Z"
+  },
+  "Dwarka Sector 12, Delhi, India": {
+    "latitude": 28.5937647,
+    "longitude": 77.0434934,
+    "fetchedAt": "2026-03-16T12:30:08.609Z"
+  },
+  "Bannerghatta Road, Bangalore, India": {
+    "latitude": 12.8741876,
+    "longitude": 77.5946855,
+    "fetchedAt": "2026-03-16T12:30:09.037Z"
+  },
+  "Nallagandla, Hyderabad, India": {
+    "latitude": 17.4637938,
+    "longitude": 78.3089554,
+    "fetchedAt": "2026-03-16T12:30:09.325Z"
+  },
+  "Kothrud, Pune, India": {
+    "latitude": 18.5073514,
+    "longitude": 73.8076543,
+    "fetchedAt": "2026-03-16T12:30:09.589Z"
+  },
+  "Goregaon East, Mumbai, India": {
+    "latitude": 19.1662566,
+    "longitude": 72.8525696,
+    "fetchedAt": "2026-03-16T12:30:09.922Z"
+  },
+  "Marathahalli, Bangalore, India": {
+    "latitude": 12.956924,
+    "longitude": 77.701127,
+    "fetchedAt": "2026-03-16T12:30:10.188Z"
+  },
+  "OMR Phase 2, Chennai, India": {
+    "latitude": 12.9589196,
+    "longitude": 80.244424,
+    "fetchedAt": "2026-03-16T12:30:10.587Z"
+  },
+  "Nibm Road, Pune, India": {
+    "latitude": 18.4702556,
+    "longitude": 73.900183,
+    "fetchedAt": "2026-03-16T12:30:10.924Z"
+  },
+  "Chembur, Mumbai, India": {
+    "latitude": 19.0522115,
+    "longitude": 72.900522,
+    "fetchedAt": "2026-03-16T12:30:11.251Z"
+  },
+  "Rajouri Garden, Delhi, India": {
+    "latitude": 28.6417002,
+    "longitude": 77.12245290000001,
+    "fetchedAt": "2026-03-16T12:30:11.587Z"
+  },
+  "Bellandur, Bangalore, India": {
+    "latitude": 12.9304278,
+    "longitude": 77.678404,
+    "fetchedAt": "2026-03-16T12:30:11.867Z"
+  },
+  "JP Nagar, Bangalore, India": {
+    "latitude": 12.9063433,
+    "longitude": 77.5856825,
+    "fetchedAt": "2026-03-16T12:30:12.167Z"
+  },
+  "LB Nagar, Hyderabad, India": {
+    "latitude": 17.3457176,
+    "longitude": 78.55222959999999,
+    "fetchedAt": "2026-03-16T12:30:12.478Z"
+  },
+  "Bavdhan, Pune, India": {
+    "latitude": 18.513463,
+    "longitude": 73.76985789999999,
+    "fetchedAt": "2026-03-16T12:30:12.747Z"
+  },
+  "Kandivali West, Mumbai, India": {
+    "latitude": 19.1998211,
+    "longitude": 72.84259399999999,
+    "fetchedAt": "2026-03-16T12:30:13.070Z"
+  },
+  "Paschim Vihar, Delhi, India": {
+    "latitude": 28.6691255,
+    "longitude": 77.0928656,
+    "fetchedAt": "2026-03-16T12:30:13.426Z"
+  },
+  "Undri, Pune, India": {
+    "latitude": 18.4566651,
+    "longitude": 73.9095279,
+    "fetchedAt": "2026-03-16T12:30:13.688Z"
+  },
+  "Greater Kailash 2, Delhi, India": {
+    "latitude": 28.5371318,
+    "longitude": 77.2370127,
+    "fetchedAt": "2026-03-16T12:30:14.048Z"
+  },
+  "Tambaram, Chennai, India": {
+    "latitude": 12.9249308,
+    "longitude": 80.1000026,
+    "fetchedAt": "2026-03-16T12:30:14.354Z"
+  },
+  "Pimple Saudagar, Pune, India": {
+    "latitude": 18.5986763,
+    "longitude": 73.79783479999999,
+    "fetchedAt": "2026-03-16T12:30:14.677Z"
+  },
+  "Medavakkam, Chennai, India": {
+    "latitude": 12.9200089,
+    "longitude": 80.1919901,
+    "fetchedAt": "2026-03-16T12:30:14.951Z"
+  },
+  "Kondhwa, Pune, India": {
+    "latitude": 18.4695088,
+    "longitude": 73.8889779,
+    "fetchedAt": "2026-03-16T12:30:15.279Z"
+  },
+  "Chromepet, Chennai, India": {
+    "latitude": 12.951611,
+    "longitude": 80.14616629999999,
+    "fetchedAt": "2026-03-16T12:30:15.575Z"
+  },
+  "Magarpatta, Pune, India": {
+    "latitude": 18.5158057,
+    "longitude": 73.9271644,
+    "fetchedAt": "2026-03-16T12:30:15.889Z"
+  },
+  "Kurla West, Mumbai, India": {
+    "latitude": 19.0707532,
+    "longitude": 72.8781322,
+    "fetchedAt": "2026-03-16T12:30:16.206Z"
+  },
+  "Uttam Nagar, Delhi, India": {
+    "latitude": 28.6195574,
+    "longitude": 77.0549901,
+    "fetchedAt": "2026-03-16T12:30:16.526Z"
+  },
+  "Varthur, Bangalore, India": {
+    "latitude": 12.9388787,
+    "longitude": 77.7412047,
+    "fetchedAt": "2026-03-16T12:30:16.828Z"
+  },
+  "Malad West, Mumbai, India": {
+    "latitude": 19.1889541,
+    "longitude": 72.835543,
+    "fetchedAt": "2026-03-16T12:30:17.142Z"
+  },
+  "Lajpat Nagar, Delhi, India": {
+    "latitude": 28.5649034,
+    "longitude": 77.2403317,
+    "fetchedAt": "2026-03-16T12:30:17.480Z"
+  },
+  "Bagalur Road, Bangalore, India": {
+    "latitude": 12.7815157,
+    "longitude": 77.8498931,
+    "fetchedAt": "2026-03-16T12:30:17.817Z"
+  },
+  "Perumbakkam, Chennai, India": {
+    "latitude": 12.8923157,
+    "longitude": 80.1888917,
+    "fetchedAt": "2026-03-16T12:30:18.158Z"
+  },
+  "Hadapsar, Pune, India": {
+    "latitude": 18.508934,
+    "longitude": 73.92591019999999,
+    "fetchedAt": "2026-03-16T12:30:18.487Z"
+  },
+  "Narsingi, Hyderabad, India": {
+    "latitude": 17.3876025,
+    "longitude": 78.3572062,
+    "fetchedAt": "2026-03-16T12:30:18.822Z"
+  }
+}
