@@ -158,94 +158,96 @@ export default function FilterBar() {
 
   return (
     <div ref={barRef} className={styles.bar}>
-      {hasActiveFilters && (
-        <button className={styles.resetBtn}
-          onClick={() => dispatch({ type: 'RESET_FILTERS' })}>
-          ✕ Clear
-        </button>
-      )}
-
-      {/* BHK */}
-      <div className={styles.dropdownWrapper}>
-        <button className={`${styles.chip} ${filters.bhk.length ? styles.chipActive : ''}`}
-          onClick={() => toggle('bhk')}>
-          {filters.bhk.length ? `${filters.bhk.sort().join(',')} BHK` : 'BHK'}
-          {filters.bhk.length > 0 && <span className={styles.chipCount}>{filters.bhk.length}</span>}
-          <Chevron open={openChip === 'bhk'} />
-        </button>
-        {openChip === 'bhk' && <BhkDropdown filters={filters} dispatch={dispatch} onClose={close} />}
-      </div>
-
-      {/* Price */}
-      <div className={styles.dropdownWrapper}>
-        <button className={`${styles.chip} ${(filters.minPrice || filters.maxPrice) ? styles.chipActive : ''}`}
-          onClick={() => toggle('price')}>
-          {filters.maxPrice
-            ? `Up to ${formatPrice(filters.maxPrice)}`
-            : filters.minPrice
-            ? `From ${formatPrice(filters.minPrice)}`
-            : 'Price'}
-          <Chevron open={openChip === 'price'} />
-        </button>
-        {openChip === 'price' && <PriceDropdown filters={filters} dispatch={dispatch} onClose={close} />}
-      </div>
-
-      {/* Property Type */}
-      <div className={styles.dropdownWrapper}>
-        <button className={`${styles.chip} ${filters.propertyType.length ? styles.chipActive : ''}`}
-          onClick={() => toggle('type')}>
-          {filters.propertyType.length === 1 ? filters.propertyType[0] : 'Type'}
-          {filters.propertyType.length > 0 && <span className={styles.chipCount}>{filters.propertyType.length}</span>}
-          <Chevron open={openChip === 'type'} />
-        </button>
-        {openChip === 'type' && (
-          <ListDropdown title="Property Type" options={PROPERTY_TYPES}
-            selected={filters.propertyType}
-            onToggle={(v) => toggleList('propertyType', v, 'propertyType')} />
+      <div className={styles.chipRow}>
+        {hasActiveFilters && (
+          <button className={styles.resetBtn}
+            onClick={() => dispatch({ type: 'RESET_FILTERS' })}>
+            ✕ Clear
+          </button>
         )}
-      </div>
 
-      {/* For Sale / Rent */}
-      <div className={styles.dropdownWrapper}>
-        <button className={`${styles.chip} ${filters.transactionType ? styles.chipActive : ''}`}
-          onClick={() => toggle('tx')}>
-          {filters.transactionType || 'For'}
-          <Chevron open={openChip === 'tx'} />
-        </button>
-        {openChip === 'tx' && (
-          <div className={styles.dropdown}>
-            <div className={styles.dropdownTitle}>Transaction</div>
-            <div className={styles.pillGroup}>
-              {TRANSACTION_TYPES.map(t => (
-                <button key={t}
-                  className={`${styles.pill} ${filters.transactionType === t ? styles.pillActive : ''}`}
-                  onClick={() => {
-                    dispatch({ type: 'SET_FILTERS', payload: {
-                      transactionType: filters.transactionType === t ? null : t
-                    }});
-                    close();
-                  }}>
-                  {t}
-                </button>
-              ))}
+        {/* BHK */}
+        <div className={styles.dropdownWrapper}>
+          <button className={`${styles.chip} ${filters.bhk.length ? styles.chipActive : ''}`}
+            onClick={() => toggle('bhk')}>
+            {filters.bhk.length ? `${filters.bhk.sort().join(',')} BHK` : 'BHK'}
+            {filters.bhk.length > 0 && <span className={styles.chipCount}>{filters.bhk.length}</span>}
+            <Chevron open={openChip === 'bhk'} />
+          </button>
+          {openChip === 'bhk' && <BhkDropdown filters={filters} dispatch={dispatch} onClose={close} />}
+        </div>
+
+        {/* Price */}
+        <div className={styles.dropdownWrapper}>
+          <button className={`${styles.chip} ${(filters.minPrice || filters.maxPrice) ? styles.chipActive : ''}`}
+            onClick={() => toggle('price')}>
+            {filters.maxPrice
+              ? `Up to ${formatPrice(filters.maxPrice)}`
+              : filters.minPrice
+              ? `From ${formatPrice(filters.minPrice)}`
+              : 'Price'}
+            <Chevron open={openChip === 'price'} />
+          </button>
+          {openChip === 'price' && <PriceDropdown filters={filters} dispatch={dispatch} onClose={close} />}
+        </div>
+
+        {/* Property Type */}
+        <div className={styles.dropdownWrapper}>
+          <button className={`${styles.chip} ${filters.propertyType.length ? styles.chipActive : ''}`}
+            onClick={() => toggle('type')}>
+            {filters.propertyType.length === 1 ? filters.propertyType[0] : 'Type'}
+            {filters.propertyType.length > 0 && <span className={styles.chipCount}>{filters.propertyType.length}</span>}
+            <Chevron open={openChip === 'type'} />
+          </button>
+          {openChip === 'type' && (
+            <ListDropdown title="Property Type" options={PROPERTY_TYPES}
+              selected={filters.propertyType}
+              onToggle={(v) => toggleList('propertyType', v, 'propertyType')} />
+          )}
+        </div>
+
+        {/* For Sale / Rent */}
+        <div className={styles.dropdownWrapper}>
+          <button className={`${styles.chip} ${filters.transactionType ? styles.chipActive : ''}`}
+            onClick={() => toggle('tx')}>
+            {filters.transactionType || 'For'}
+            <Chevron open={openChip === 'tx'} />
+          </button>
+          {openChip === 'tx' && (
+            <div className={styles.dropdown}>
+              <div className={styles.dropdownTitle}>Transaction</div>
+              <div className={styles.pillGroup}>
+                {TRANSACTION_TYPES.map(t => (
+                  <button key={t}
+                    className={`${styles.pill} ${filters.transactionType === t ? styles.pillActive : ''}`}
+                    onClick={() => {
+                      dispatch({ type: 'SET_FILTERS', payload: {
+                        transactionType: filters.transactionType === t ? null : t
+                      }});
+                      close();
+                    }}>
+                    {t}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
 
-      {/* Possession */}
-      <div className={styles.dropdownWrapper}>
-        <button className={`${styles.chip} ${filters.possession.length ? styles.chipActive : ''}`}
-          onClick={() => toggle('possession')}>
-          {filters.possession.length === 1 ? filters.possession[0] : 'Status'}
-          {filters.possession.length > 0 && <span className={styles.chipCount}>{filters.possession.length}</span>}
-          <Chevron open={openChip === 'possession'} />
-        </button>
-        {openChip === 'possession' && (
-          <ListDropdown title="Possession Status" options={POSSESSION_OPTIONS}
-            selected={filters.possession}
-            onToggle={(v) => toggleList('possession', v, 'possession')} />
-        )}
+        {/* Possession */}
+        <div className={styles.dropdownWrapper}>
+          <button className={`${styles.chip} ${filters.possession.length ? styles.chipActive : ''}`}
+            onClick={() => toggle('possession')}>
+            {filters.possession.length === 1 ? filters.possession[0] : 'Status'}
+            {filters.possession.length > 0 && <span className={styles.chipCount}>{filters.possession.length}</span>}
+            <Chevron open={openChip === 'possession'} />
+          </button>
+          {openChip === 'possession' && (
+            <ListDropdown title="Possession Status" options={POSSESSION_OPTIONS}
+              selected={filters.possession}
+              onToggle={(v) => toggleList('possession', v, 'possession')} />
+          )}
+        </div>
       </div>
     </div>
   );

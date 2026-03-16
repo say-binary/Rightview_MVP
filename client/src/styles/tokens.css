@@ -45,12 +45,12 @@
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.14), 0 4px 8px rgba(0,0,0,0.08);
   --shadow-sheet: 0 -4px 20px rgba(0,0,0,0.12);
 
-  /* Z-index layers */
+  /* Z-index layers — must beat Google Maps internal overlays (up to ~2147483646) */
   --z-map: 0;
-  --z-sheet: 10;
-  --z-overlay: 20;
-  --z-dropdown: 30;
-  --z-toast: 50;
+  --z-sheet: 1000010;
+  --z-overlay: 1000020;
+  --z-dropdown: 1000030;
+  --z-toast: 1000050;
 
   /* Layout */
   --filter-bar-height: 52px;

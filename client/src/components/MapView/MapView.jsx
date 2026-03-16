@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import { Loader } from '@googlemaps/js-api-loader';
 import { useApp } from '../../context/AppContext';
 import { useMapBounds } from '../../hooks/useMapBounds';
 import { isValidCoord } from '../../utils/mapHelpers';
@@ -12,12 +11,15 @@ let googleMapsPromise = null;
 
 function loadGoogleMaps() {
   if (!googleMapsPromise) {
-    const loader = new Loader({
-      apiKey: MAPS_API_KEY,
-      version: 'weekly',
-      libraries: ['marker'],
+    googleMapsPromise = new Promise((resolve, reject) => {
+      if (window.google?.maps?.Map) { resolve(); return; }
+      window.__googleMapsCallback = resolve;
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${MAPS_API_KEY}&v=weekly&loading=async&callback=__googleMapsCallback`;
+      script.async = true;
+      script.onerror = reject;
+      document.head.appendChild(script);
     });
-    googleMapsPromise = loader.load();
   }
   return googleMapsPromise;
 }
@@ -28,21 +30,18 @@ export default function MapView() {
 
   const mapDivRef = useRef(null);
   const mapRef = useRef(null);
-  const markersRef = useRef(new Map()); // id → AdvancedMarkerElement
+  const markersRef = useRef(new Map());
 
   useMapBounds(mapRef);
 
-  // Initialize map
+  // Initialize map — no mapId so raster tiles load immediately
   useEffect(() => {
     let cancelled = false;
-
     loadGoogleMaps().then(() => {
       if (cancelled || mapRef.current) return;
-
       mapRef.current = new window.google.maps.Map(mapDivRef.current, {
         center: mapCenter,
         zoom: mapZoom,
-        mapId: 'rightview_map',
         gestureHandling: 'greedy',
         disableDefaultUI: true,
         clickableIcons: false,
@@ -52,21 +51,19 @@ export default function MapView() {
         ],
       });
     });
-
     return () => { cancelled = true; };
   }, []);
 
-  // Pan map when mapCenter changes (from chat query geocode)
+  // Pan map when center changes
   useEffect(() => {
     if (mapRef.current && mapCenter) {
       mapRef.current.panTo(mapCenter);
     }
   }, [mapCenter]);
 
-  // Update pins when properties change
+  // Update pins — use standard Marker (no mapId needed)
   useEffect(() => {
-    if (!mapRef.current) return;
-    if (typeof window.google === 'undefined') return;
+    if (!mapRef.current || !window.google?.maps) return;
 
     const existingIds = new Set(markersRef.current.keys());
     const newIds = new Set(properties.map(p => p.id));
@@ -74,7 +71,7 @@ export default function MapView() {
     // Remove stale markers
     for (const id of existingIds) {
       if (!newIds.has(id)) {
-        markersRef.current.get(id).map = null;
+        markersRef.current.get(id).setMap(null);
         markersRef.current.delete(id);
       }
     }
@@ -82,47 +79,63 @@ export default function MapView() {
     // Add / update markers
     for (const property of properties) {
       if (!isValidCoord(property.coordinates)) continue;
+      const isActive = property.id === activePropertyId;
+      const label = formatPinLabel(property.price?.value);
 
       if (markersRef.current.has(property.id)) {
-        // Update active state
-        const el = markersRef.current.get(property.id).content;
-        if (el) {
-          el.classList.toggle('active', property.id === activePropertyId);
-        }
+        markersRef.current.get(property.id).setIcon(makePinIcon(label, isActive));
         continue;
       }
 
-      // Create pin element
-      const pinEl = document.createElement('div');
-      pinEl.className = `rv-pin${property.id === activePropertyId ? ' active' : ''}`;
-      pinEl.textContent = formatPinLabel(property.price?.value);
-
-      const marker = new window.google.maps.marker.AdvancedMarkerElement({
+      const marker = new window.google.maps.Marker({
         map: mapRef.current,
         position: {
           lat: property.coordinates.latitude,
           lng: property.coordinates.longitude,
         },
-        content: pinEl,
+        icon: makePinIcon(label, isActive),
         title: property.builder_info?.project_name || property.id,
+        optimized: true,
       });
 
       marker.addListener('click', () => {
         dispatch({ type: 'SET_ACTIVE_PROPERTY', payload: property.id });
-        dispatch({ type: 'SET_SHEET_STATE', payload: 'half' });
+        dispatch({ type: 'SET_SHEET_STATE', payload: 'peek' });
       });
 
       markersRef.current.set(property.id, marker);
     }
   }, [properties, activePropertyId]);
 
-  // Update active pin highlight without re-rendering all pins
+  // Update active pin highlight
   useEffect(() => {
     for (const [id, marker] of markersRef.current.entries()) {
-      const el = marker.content;
-      if (el) el.classList.toggle('active', id === activePropertyId);
+      const property = properties.find(p => p.id === id);
+      if (!property) continue;
+      const label = formatPinLabel(property.price?.value);
+      marker.setIcon(makePinIcon(label, id === activePropertyId));
     }
   }, [activePropertyId]);
 
-  return <div ref={mapDivRef} className={styles.mapContainer} />;
+  return (
+    <div className={styles.mapContainer}>
+      <div ref={mapDivRef} className={styles.mapInner} />
+    </div>
+  );
+}
+
+function makePinIcon(label, active) {
+  const bg = active ? '%23dc2626' : '%231a56db';
+  const w = Math.max(48, label.length * 8 + 20);
+  const h = 28;
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='${w}' height='${h + 8}'>
+    <rect x='1' y='1' width='${w - 2}' height='${h - 2}' rx='13' fill='${bg}' stroke='white' stroke-width='1.5'/>
+    <text x='${w / 2}' y='${h / 2 + 4}' text-anchor='middle' font-family='Arial,sans-serif' font-size='11' font-weight='bold' fill='white'>${label}</text>
+    <polygon points='${w / 2 - 4},${h - 1} ${w / 2 + 4},${h - 1} ${w / 2},${h + 6}' fill='${bg}'/>
+  </svg>`;
+  return {
+    url: 'data:image/svg+xml;charset=UTF-8,' + svg,
+    anchor: new window.google.maps.Point(w / 2, h + 8),
+    scaledSize: new window.google.maps.Size(w, h + 8),
+  };
 }

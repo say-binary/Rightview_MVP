@@ -15,14 +15,7 @@ function buildQueryString(filters) {
   if (filters.transactionType) params.set('transactionType', filters.transactionType);
   if (filters.locality) params.set('locality', filters.locality);
 
-  const b = filters.mapBounds;
-  if (b?.swLat != null) {
-    params.set('swLat', b.swLat);
-    params.set('swLng', b.swLng);
-    params.set('neLat', b.neLat);
-    params.set('neLng', b.neLng);
-  }
-
+  // Bounds filter intentionally omitted — show all matching properties across the map
   return params.toString();
 }
 

@@ -18,6 +18,7 @@ export default function PropertyCard({ property }) {
 
   const handleClick = () => {
     dispatch({ type: 'SET_ACTIVE_PROPERTY', payload: property.id });
+    dispatch({ type: 'SET_SHEET_STATE', payload: 'peek' });
     if (property.coordinates) {
       dispatch({
         type: 'SET_MAP_CENTER',
